@@ -1,0 +1,11 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include/rem
+
+Name: librem
+Description: Audio and video processing media library
+Version: 0.5.3
+URL: http://creytiv.com/rem.html
+Libs: -L${libdir} -lrem -lre
+Cflags: -I${includedir}

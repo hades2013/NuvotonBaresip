@@ -1,0 +1,5 @@
+config  W55FA92_AAC
+	bool "Nuvoton W55FA92 AAC Device Driver"
+	depends on ARCH_W55FA92
+	help
+		Enable AAC or not.

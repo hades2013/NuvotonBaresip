@@ -1,0 +1,9 @@
+usage:
+    ./blt_demo -m 1     ==> Enable MMU mode.
+    ./blt_Demo -m 0     ==> Disable MMU mode, it needs devmem driver to alloc memory. Insert fa92_devmem first.
+    ./blt_demo -k 1     ==> Enable color key demo.
+    ./blt_demo -k 0     ==> Disable color key demo.
+    ./blt_demo -a 1     ==> Enable animate alpha demo.
+    ./blt_demo -a 0     ==> Disable animate alpha demo.
+    
+    ./blt_demo          ==> default to MMU mode, color key demo, no animate alpha demo.

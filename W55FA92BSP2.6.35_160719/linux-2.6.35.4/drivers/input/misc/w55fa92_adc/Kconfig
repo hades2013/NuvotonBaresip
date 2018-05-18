@@ -1,0 +1,42 @@
+config INPUT_W55FA92_ADC
+	bool "W55FA92 Input ADC Function"
+	depends on CPU_W55FA92
+	help
+	  If unsure, say N (but it's safe to say "Y").
+
+menu "ADC Function Select"
+	depends on INPUT_W55FA92_ADC
+
+config TOUCH_DETECTION
+        bool "Touch panel detection"
+config BATTERY_DETECTION
+        bool "Battery detection"
+config KEYPAD_DETECTION
+        bool "Keypad detection"
+endmenu
+
+choice
+    prompt "BATTERY detection channel selection"
+		default BATTERY_CHANNEL_1
+	depends on BATTERY_DETECTION
+  
+		config BATTERY_CHANNEL_1
+			bool "Battery detection from channel 1"
+		config BATTERY_CHANNEL_2
+			bool "Battery detection from channel 2"
+		config BATTERY_CHANNEL_3
+			bool "Battery detection from channel 3"
+endchoice
+
+choice
+    prompt "Keypad detection channel selection"
+		default KEYPAD_CHANNEL_2
+	depends on KEYPAD_DETECTION
+  
+		config KEYPAD_CHANNEL_1
+			bool "Keypad detection from channel 1"
+		config KEYPAD_CHANNEL_2
+			bool "Keypad detection from channel 2"
+		config KEYPAD_CHANNEL_3
+			bool "Keypad detection from channel 3"
+endchoice

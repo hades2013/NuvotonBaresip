@@ -1,0 +1,37 @@
+8
+
+dir
+0
+https://nthcrdvss01.nuvoton.com/svn/ARM/W55FA95/tags/applications/serial_loop
+https://nthcrdvss01.nuvoton.com/svn/ARM
+add
+
+
+
+
+
+
+
+svn:special svn:externals svn:needs-lock
+
+serial_loop.c
+file
+
+
+
+add
+
+README.txt
+file
+
+
+
+add
+
+Makefile
+file
+
+
+
+add
+

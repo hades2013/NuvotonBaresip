@@ -1,0 +1,12 @@
+prefix=/home/hades/baresip/W55FA92BSP2.6.35_160719/rootfs-2.6.35/usr
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include/re
+
+Name: libre
+Description: 
+Version: 0.5.8
+URL: http://creytiv.com/re.html
+Libs: -L${libdir} -lre
+Libs.private: -L${libdir} -lre -ldl -lssl -lcrypto -lz -lpthread
+Cflags: -I${includedir}

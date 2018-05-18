@@ -1,0 +1,30 @@
+font_8x8.o: font_8x8.c font.h \
+  /usr/local/arm_linux_4.3/usr/include/linux/types.h \
+  /usr/local/arm_linux_4.3/usr/include/asm/types.h \
+  /usr/local/arm_linux_4.3/usr/include/asm-generic/int-ll64.h \
+  /usr/local/arm_linux_4.3/usr/include/asm/bitsperlong.h \
+  /usr/local/arm_linux_4.3/usr/include/asm-generic/bitsperlong.h \
+  /usr/local/arm_linux_4.3/usr/include/linux/posix_types.h \
+  /usr/local/arm_linux_4.3/usr/include/linux/stddef.h \
+  /usr/local/arm_linux_4.3/usr/include/linux/compiler.h \
+  /usr/local/arm_linux_4.3/usr/include/asm/posix_types.h
+
+font.h:
+
+/usr/local/arm_linux_4.3/usr/include/linux/types.h:
+
+/usr/local/arm_linux_4.3/usr/include/asm/types.h:
+
+/usr/local/arm_linux_4.3/usr/include/asm-generic/int-ll64.h:
+
+/usr/local/arm_linux_4.3/usr/include/asm/bitsperlong.h:
+
+/usr/local/arm_linux_4.3/usr/include/asm-generic/bitsperlong.h:
+
+/usr/local/arm_linux_4.3/usr/include/linux/posix_types.h:
+
+/usr/local/arm_linux_4.3/usr/include/linux/stddef.h:
+
+/usr/local/arm_linux_4.3/usr/include/linux/compiler.h:
+
+/usr/local/arm_linux_4.3/usr/include/asm/posix_types.h:

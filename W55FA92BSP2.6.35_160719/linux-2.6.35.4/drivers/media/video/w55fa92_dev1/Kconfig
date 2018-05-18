@@ -1,0 +1,209 @@
+config W55FA92_VIDEOIN_DEV1
+	bool "W55FA92 video capture port 1 support"
+	depends on ARCH_W55FA92 && VIDEO_DEV
+	---help---
+	  Say Y here if you have W55FA92chip(nuvoTon).
+
+	  To compile this driver as a module, choose M here: the
+	  module will be called W55FA92_videoin_dev1.
+
+config VIN_DEV1_ENCODE_WIDTH
+        int "VideoIn DEV1 encode width"
+        default 640
+        depends on W55FA92_VIDEOIN_DEV1
+        help
+          Default is 640
+
+config VIN_DEV1_ENCODE_HEIGHT
+        int "VideoIn DEV1 encode height"
+        default 480
+        depends on W55FA92_VIDEOIN_DEV1
+        help
+          Default is 480
+
+config VIN_DEV1_ENCODE_BUF_NO
+        int "VideoIn DEV1 encode buffer numbers"
+		range 2 3
+        default 3
+        depends on W55FA92_VIDEOIN_DEV1
+        help
+          Specified the encode buffer numbers
+
+config VIN_DEV1_PREVIEW_WIDTH
+        int "VideoIn DEV1 preview width"
+        default 320
+        depends on W55FA92_VIDEOIN_DEV1
+        help
+          Default is 320
+
+config VIN_DEV1_PREVIEW_HEIGHT
+        int "VideoIn DEV1 preview height"
+        default 240
+        depends on W55FA92_VIDEOIN_DEV1
+        help
+          Default is 240
+
+config VIN_DEV1_PREVIEW_BUF_NO
+        int "VideoIn DEV1 preview buffer numbers"
+		range 3 3
+        default 3
+        depends on W55FA92_VIDEOIN_DEV1
+        help
+          Specified the preview buffer numbers
+
+choice 
+	prompt "Board Select"
+        default DEV_BOARD_DEV1
+	depends on W55FA92_VIDEOIN_DEV1
+		config  DEV_BOARD_DEV1
+			bool "Developement board"
+		config  DEMO_BOARD_DEV1
+			bool "Demo board"
+		config  VIDEODOOR_BOARD_DEV1
+			bool "Videodoor board"
+endchoice
+
+config SUPPORT_SENSOR_RESET_DEV1
+	bool "Support sensor reset pin"
+	default y
+	depends on W55FA92_VIDEOIN_DEV1
+	---help---
+	  Say Y here if you need sensor reset pin. Please refer the circit. 
+
+config SUPPORT_SENSOR_POWER_DOWN_DEV1
+	bool "Support sensor power down pin"
+	default y
+	depends on W55FA92_VIDEOIN_DEV1
+	---help---
+	  Say Y here if you need sensor power down pin. Please refer the circit. 
+
+config SUPPORT_SHARE_PACKET_BUFFER_DEV1
+	tristate "Support share packet buffer with senor port 2"
+	depends on W55FA92_VIDEOIN_DEV1
+	---help---
+	  Say Y here if you wnat to support share packet buffer with sensor port 2
+
+config SUPPORT_SHARE_PLANAR_BUFFER_DEV1
+	tristate "Support share planar buffer with senor port 2"
+	depends on W55FA92_VIDEOIN_DEV1
+	---help---
+	  Say Y here if you wnat to support share planar buffer with sensor port 2
+
+config SHARE_SENSOR
+	tristate "Support share sensor to capture port 2"
+	depends on W55FA92_VIDEOIN_DEV1
+	---help---
+	  Say Y here if you wnat to support share sensor to capture port 2.
+
+config MOTION_DETECTION_DEV1
+	tristate "Support motion detection function"
+	depends on W55FA92_VIDEOIN_DEV1
+	---help---
+	  Say Y here if you wnat to support motion detection function.
+
+choice 
+	prompt "Encode format"
+        default PLANAR_YUV422_YUV420_DEV1
+	depends on W55FA92_VIDEOIN_DEV1
+	
+		config  PLANAR_YUV422_YUV420_DEV1
+			bool "Support planar yuv422/yuv420"
+		config  PLANAR_YUV420_DEV1
+			bool "Support planar yuv420"
+endchoice
+
+choice
+    prompt "Video Sensor support"
+		default SENSOR_OV7725_DEV1
+	depends on W55FA92_VIDEOIN_DEV1
+ 
+		config SENSOR_OV9660_DEV1
+			bool "OV9660 sensor support"
+		config SENSOR_OV7670_DEV1
+			bool "OV7670 sensor support"
+		config SENSOR_OV7725_DEV1
+			bool "OV7725 sensor support"
+		config SENSOR_NT99140_DEV1
+			bool "NT99140 sensor support"
+		config SENSOR_NT99141_DEV1
+			bool "NT99141 sensor support"
+		config SENSOR_NT99142_DEV1
+			bool "NT99142 sensor support"
+		config SENSOR_NT99050_DEV1
+			bool "NT99050 sensor support"
+		config SENSOR_NT99160_DEV1
+			bool "NT99160 sensor support"
+		config SENSOR_NT99340_DEV1
+			bool "NT99340 sensor support"
+		config SENSOR_NT99252_DEV1
+			bool "NT99252 sensor support"
+		config SENSOR_NT99240_DEV1
+			bool "NT99240 sensor support"
+		config SENSOR_HM1375_DEV1
+			bool "HM1375 sensor support"	
+		config SENSOR_HM1055_DEV1
+			bool "HM1055 sensor support"	
+		config SENSOR_SP1628_DEV1
+			bool "SP1628 sensor support"
+		config SENSOR_TW9912_DEV1
+			bool "TW9912 sensor support"	
+endchoice
+choice
+    prompt "AEC/AWB target frame rate selection"
+		default TARGET_25FPS
+	depends on SENSOR_NT99141_DEV1 || SENSOR_NT99142_DEV1
+		config TARGET_25FPS
+			bool "AEC/AWB target fixed 25fps"
+		config TARGET_23FPS
+			bool "AEC/AWB target fixed 23fps"
+		config TARGET_15FPS
+			bool "AEC/AWB target 15fps at least"
+		config TARGET_10FPS
+			bool "AEC/AWB target 10fps at least"
+endchoice
+
+choice
+    prompt "Frame rate selection"
+		default 30_FRAME_DEV1
+	depends on SENSOR_NT99050_DEV1  
+		config 30_FRAME_DEV1
+			bool "30 frames/sec"
+		config 60_FRAME_DEV1
+			bool "60 frames/sec"
+endchoice
+
+choice
+    prompt "NTSC/PAL System selection"
+		default PAL_SYSTEM_DEV1
+	depends on SENSOR_TW9912_DEV1  
+		config PAL_SYSTEM_DEV1
+			bool "PAL system"
+		config NTSC_SYSTEM_DEV1
+			bool "NTSC system"
+endchoice
+
+choice
+    prompt "Video port connection"
+		default VIDEO_PORT1
+	depends on W55FA92_VIDEOIN_DEV1
+  
+		config VIDEO_PORT1
+			bool "Data/Control==>GPB port"
+		config VIDEO_PORT2
+			bool "Data==>GPC port. Control==>GPA/GPE port"
+		config VIDEO_PORT2_1
+			bool "Data==>GPG/GPD port. Control==>GPD port"
+endchoice
+
+
+choice
+    prompt "Flicker Setting"
+		default FLICKER_60HZ
+	depends on W55FA92_VIDEOIN_DEV1
+  
+		config FLICKER_60HZ_DEV1
+			bool "Flicker setting is 60Hz"
+		config FLICKER_50HZ_DEV1
+			bool "Flicker setting is 50Hz"		
+endchoice
+
